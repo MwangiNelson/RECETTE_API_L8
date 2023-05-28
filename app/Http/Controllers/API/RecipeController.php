@@ -55,6 +55,17 @@ class RecipeController extends Controller
         }
     }
 
+    public function getTopRecipes()
+    {
+        $topRecipes = recipes::orderBy('likes', 'desc')->take(5)->get();
+        //if none return an error code message of 400
+        if ($topRecipes->count() > 0) {
+            return $this->apiDeliver(200, $topRecipes);
+        } else {
+            return $this->apiDeliver(400, "No records found");
+        }
+    }
+
     //gets the specific queried Recipe using its id as an argument
     public function getSpecificRecipe($id)
     {

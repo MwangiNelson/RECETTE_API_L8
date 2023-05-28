@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('recipes', [RecipeController::class, 'getAllRecipes']);
+Route::get('recipes/topRecipes', [RecipeController::class, 'getTopRecipes']);
 Route::get('recipes/{id}', [RecipeController::class, 'getSpecificRecipe']);
 Route::post('recipes', [RecipeController::class, 'addRecipe']);
 
